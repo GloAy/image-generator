@@ -5,6 +5,6 @@ React Hooks, Material-Ui and axios was used to build this app.
 Check out the deployed app Here. [SpaceGram](https://61e79f2b314ddb6243cd6c62--fervent-goldberg-9c06a9.netlify.app/).
 
 <div align = "center">
-<img src="./public/spacegram1" width="40%">
-<img src="./public/spacegram2" width="40%">
+<img src="./public/spacegram1.png" width="40%">
+<img src="./public/spacegram2.png" width="40%">
 </div>
