@@ -1,4 +1,4 @@
-Application fetches data from one of NASA’s APIs and displays the resulting image. The image details are shown and user is able to like and dislike the it.
+Application fetches data from one of NASA’s APIs and displays the resulting image. The image details are shown and user is able to like and dislike the it. The description is hidden and user is able to view the description using an extend button.
 
 React Hooks, Material-Ui and axios was used to build this app.
 
