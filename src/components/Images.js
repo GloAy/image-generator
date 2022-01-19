@@ -12,7 +12,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { ExpandMoreSharp } from "@material-ui/icons";
 import Collapse from "@mui/material/Collapse";
-import { makeStyles } from "@mui/material/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 import Likes from "./Likes";
 
 const url =
@@ -30,11 +31,17 @@ const ExpandMore = styled((props) => {
 }));
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   card: {
-    marginBottom: theme.spacing(5),
+    maxWidth: 600,
   },
   image: {
-    height: 250,
+    height: 500,
     [theme.breakpoints.down("sm")]: {
       height: 150,
     },
@@ -61,65 +68,60 @@ const Images = () => {
 
   return (
     <div>
-      <Typography variant="h2" component="h2">
-        SpaceGram
-      </Typography>
-      <Card
-        className={classes.card}
-        styles={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
-              G
-            </Avatar>
-          }
-          title={images.copyright}
-          subheader={images.date}
-        />
-        <CardMedia
-          component="img"
-          image={images.url}
-          alt={images.title}
-          className={classes.image}
-        />
-        <CardContent>
-          <CardActions disableSpacing>
+      <Container className={classes.container}>
+        <Typography variant="h3" paragraph>
+          SpaceGram
+        </Typography>
+        <Card className={classes.card}>
+          <CardHeader
+            avatar={
+              <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
+                G
+              </Avatar>
+            }
+            title={images.copyright}
+            subheader={images.date}
+          />
+          <CardMedia
+            component="img"
+            image={images.url}
+            alt={images.title}
+            className={classes.image}
+          />
+          <CardContent>
+            <Likes />
+            <CardActions disableSpacing>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                align="left"
+                paragraph
+              >
+                {images.title}
+              </Typography>
+            </CardActions>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="see description"
+              desription={images.explanation}
+            >
+              <ExpandMoreSharp />
+            </ExpandMore>
+          </CardContent>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Typography
               variant="body1"
               color="text.secondary"
               align="left"
-              paragraph
+              alt={images.explanation}
             >
-              {images.title}
+              {images.explanation}
             </Typography>
-            <Likes />
-          </CardActions>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-            desription={images.explanation}
-          >
-            <ExpandMoreSharp />
-          </ExpandMore>
-        </CardContent>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            align="left"
-            alt={images.explanation}
-          >
-            {images.explanation}
-          </Typography>
-        </Collapse>
-      </Card>
+          </Collapse>
+        </Card>
+      </Container>
     </div>
   );
 };

@@ -8,7 +8,6 @@ const Likes = () => {
   return (
     <div
       style={{
-        margin: "auto",
         display: "block",
         width: "fit-content",
       }}
